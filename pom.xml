@@ -54,18 +54,13 @@
       <scope>runtime</scope>
     </dependency>
 
-    <!-- Tests -->
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-test</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <!-- Spring security....authentication/validation of user /admin -->
+    <!-- Spring Security -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-security</artifactId>
     </dependency>
-    <!-- JWT Lib we have api(to generate token) impl(to implement token) jackson(to transulate that token)-->
+
+    <!-- JWT: api (API), impl (implementation), jackson (JSON) -->
     <dependency>
       <groupId>io.jsonwebtoken</groupId>
       <artifactId>jjwt-api</artifactId>
@@ -84,12 +79,19 @@
       <scope>runtime</scope>
     </dependency>
 
+    <!-- Tests -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
 
   </dependencies>
 
   <build>
     <plugins>
-      <!-- Ensure Java 21 and keep parameter names for Spring -->
+
+      <!-- Compile with Java 21 and keep parameter names (for @PathVariable etc.) -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -100,12 +102,22 @@
         </configuration>
       </plugin>
 
-      <!-- Pin Spring Boot plugin version since we're not using the parent POM -->
+      <!-- Spring Boot plugin: makes the JAR executable (fat JAR with main manifest) -->
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
         <version>${spring.boot.version}</version>
+        <executions>
+          <execution>
+            <goals>
+              <!-- This re-wraps the normal JAR into a runnable Spring Boot JAR -->
+              <goal>repackage</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
+
     </plugins>
   </build>
+
 </project>
