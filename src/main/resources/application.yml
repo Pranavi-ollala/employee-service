@@ -1,5 +1,6 @@
 server:
-  port: 8080
+  port: ${PORT:8080}
+
 
 spring:
   datasource:
@@ -10,7 +11,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-    open-in-view: false
+    # open-in-view: false
     properties:
       hibernate:
         format_sql: true
@@ -22,3 +23,7 @@ spring:
 app:
   name: employee-service
   version: 0.0.1
+  jwt:
+    secret: "this_is_a_very_long_demo_secret_key_1234567890"
+    expiryMinutes: 2000
+    
