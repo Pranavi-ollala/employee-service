@@ -56,7 +56,7 @@ public class SecurityConfig {
         .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .authorizeHttpRequests(auth -> auth
             // Login and auth endpoints: open
-            .requestMatchers("/api/auth/**").permitAll()
+            .requestMatchers("/", "/api/auth/**").permitAll()
             // H2 console: open (for dev only)
             .requestMatchers("/h2-console/**").permitAll()
             // READ operations on APIs: USER or ADMIN
