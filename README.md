@@ -11,6 +11,33 @@ It exposes REST APIs for CRUD operations and secures them using **JWT authentica
 This project was built from scratch to learn and practice **backend development** (coming from SAP ABAP background), and to showcase skills for backend developer roles.
 
 ---
+##  Live Demo
+
+The backend is deployed on Render:
+
+- Base URL: https://employee-service-1-1t74.onrender.com
+- Auth login: https://employee-service-1-1t74.onrender.com/api/auth/login
+- Example protected API: https://employee-service-1-1t74.onrender.com/api/employees
+
+> Note: All protected endpoints require a JWT token in the `Authorization: Bearer <token>` header.
+
+
+## 🚦 Quick Start (Test Live API with Postman)
+
+### 1. Login (get JWT token)
+
+- Method: `POST`
+- URL: `https://employee-service-1-1t74.onrender.com/api/auth/login`
+- Headers:
+  - `Content-Type: application/json`
+- Body (raw JSON):
+
+```json
+{
+  "username": "admin",
+  "password": "admin123"
+}
+
 
 ## ✨ Features
 
@@ -76,3 +103,5 @@ This project was built from scratch to learn and practice **backend development*
 Check Java:
 ```bash
 java -version
+
+
